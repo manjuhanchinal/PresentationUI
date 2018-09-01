@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+    </div>*@
+
+<html ng-app="MyEmployeeApp">
+<head>
+    <title>AngularJs With WebApi and Stored Procedure</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/employeeApp.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+</head>
+<body>
+
+    <div ng-controller="employeejsController" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="header">AngularJs With WebApi</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <strong class="error">{{error}}</strong>
+                <form name="addemployee" style="width: 600px; margin: 0px auto;">
+                    <table>
+                        <tr class="form-group">
+                            <td><label for="cname" class="col-sm-2 control-label">Id:</label></td>
+                            <td class="col-sm-10 space">
+                                <div>
+                                    <input type="text" class="form-control" id="cname" placeholder="please enter your Id" ng-model="newemployee.Id" required />
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group">
+                            <td >
+                                <label for="cname" class="col-sm-10 control-label">Firstname:</label>
+                            </td>
+                            <td class="col-sm-10 space">
+                                <div>
+                                    <input type="text" class="form-control" id="cname" placeholder="please enter your firstname" ng-model="newemployee.FirstName" required />
+                                </div>
+                            </td>
+                        </tr>
+
+
+                        <tr class="form-group">
+                            <td>
+                                <label for="lname" class="col-sm-6 control-label">Lastname:</label>
+                            </td>
+                            <td class="col-sm-10 space">
+                                <div>
+                                    <input type="text" class="form-control" id="lname" placeholder="please enter your lastname" ng-model="newemployee.LastName" required />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="lname" class="col-sm-6 control-label">Name:</label>
+                            </td>
+                            <td class="col-sm-10 space">
+                                <div>
+                                    <strong class="col-sm-10 space" ng-model="newemployee.Name"> {{newemployee.LastName}}  {{newemployee.FirstName}} </strong>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="form-group">
+                            <td>
+                                <label for="designation" class="col-sm-6 control-label">Designation:</label>
+                            </td>
+                            <td class="col-sm-10 space">
+                                <div>
+                                    <input type="text" class="form-control" id="address" placeholder="please enter your Designation" ng-model="newemployee.Designation" required />
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <br />
+                    <div class="form-group space">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" value="Add" ng-click="add()" ng-show="addShow" ng-disabled="!addemployee.$valid" class="btn btn-primary" />
+                            <input type="submit" value="Update" ng-click="update()" ng-show="updateShow" ng-disabled="!addemployee.$valid" class="btn btn-primary" />
+                            <input type="button" value="Cancel" ng-click="cancel()" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <br />
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" style="width: 800px; margin-left: 170px;">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Designation</th>
+                        </tr>
+                        <tr ng-repeat="employee in employees">
+                            <td>
+                                <p>{{ employee.Id }}</p>
+                            </td>
+                            <td>
+                                <p>{{ employee.Name }}</p>
+                            </td>
+                            <td>
+                                <p>{{ employee.Designation }}</p>
+                            </td>
+                            <td>
+                                <p><a ng-click="edit()" href="javascript:void(0);">Edit</a> | <a ng-click="delete()" href="javascript:void(0);">Delete</a></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
